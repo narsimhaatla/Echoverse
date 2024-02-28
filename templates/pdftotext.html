@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF|Audio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body{
+            background-color: black;
+            color: aliceblue;
+            background-image: url('static/images/background.jpg');
+            
+            backdrop-filter: blur(30px);
+        }
+        input{
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('index') }}" class="margin">Back</a>
+
+    <h1>Pdf to Audio Converter</h1>
+    <div class="flex">
+        <img src="{{ url_for('static', filename='images/pdf-to-mp3.jpg') }}" class="image" style="margin-left: 70px;">
+        <div class="pdfto"  style="margin: 10px auto; color: aqua;">
+            <form method = "POST" action = '/ptoa' enctype="multipart/form-data" >
+                <h3>Submit the file Here</h3>
+                <input type="file" name = "file" accept = "pdf/* " required>
+                <h3>Enter the page numbers</h3>
+                <div class="flex">
+                        <input type="text" name="start" placeholder="start Page number">
+                        <input type="text" name = "end" placeholder="End Page number">
+                </div>
+                <h3>Select the Voice Rate</h3>
+                <div>
+                    <form action="#">
+                        <label for="lang">Rate</label>
+                        <select name="speeds" id="speed">
+                        <option value="slow">Slow</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Fast">Fast</option>
+                        </select>
+                
+                <h3>select the tone</h3>
+                        <label for="lang">Tone</label>
+                        <select name="tones" id="tone">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        </select>
+                        <div style="margin-top:1px;padding: px;">
+                            <h3>Output File Name</h3>
+                            <input placeholder="enter the file name" name="output_file">
+                        </div >
+                        <div>
+                            <button>submit</button>
+                        </div>
+                        
+                </form>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

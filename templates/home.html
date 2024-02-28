@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME|AUDIO CONVERTER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   <style>
+     #span {
+            display: inline-block;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            color: black;
+            text-align: center;
+        }
+
+        #span.active {
+            opacity: 1;
+        }
+       
+   </style>
+</head>
+<body>
+    <nav>
+        <ul type="none">
+            <li class="heading">EchoVerse</li>
+            <div class="flex lnks">
+                <a href="{{ url_for('imgtoaudio') }}"><li>Image to audio</li></a>
+                <a href="{{ url_for('pdftoaudio') }}"><li>PDF to audio</li></a>
+                <a href="{{ url_for('texttoaudio') }}"><li>Text to audio</li></a>
+                
+            </div>
+            
+        </ul>
+        
+    </nav>
+    <div class="center">
+        <h2>Want to Convert to audio from these files <span id="span"></span> </h2>
+    </div>
+    <div class="flex margin">
+        <img src="static/images/main.png" class="mainimg">
+        <div>
+            <h1> Transforming the Way You Consume <span>Information</span></h1>
+            <h2>Discover a world where your words, documents, and images come to life through EchoVerse. Our platform empowers you to effortlessly convert text, PDFs, and images into audio files, enhancing the accessibility of information to everyone.</h2>
+        </div>
+       
+    </div>
+   
+    <div class="home-tags">
+        <a href="{{ url_for('pdftoaudio') }}">PDF to audio Conversion</a>
+        <a href="{{ url_for('texttoaudio') }}">Text to audio Conversion</a>
+        <a href="{{ url_for('imgtoaudio') }}">Image to audio Conversion</a>
+    </div>
+    <script>
+       
+        let a = ["#Text", "#PDF", "#Image"];
+        let span = document.getElementById('span');
+
+        
+        function fadeIn() {
+            span.classList.add('active');
+            setTimeout(() => {
+                span.classList.remove('active');
+            }, 1000);
+        }
+
+        
+        setInterval(() => {
+            let x = Math.floor(Math.random() * a.length);
+            span.innerText = a[x];
+            span.classList.add('active');
+           
+        }, 1000);
+        </script>
+</body>
+</html>

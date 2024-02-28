@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text|Audio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body{
+            background-image: url('static/images/background.jpg');
+            color: aliceblue;
+            backdrop-filter: blur(20px);
+
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('index') }}" class="margin">Back</a>
+    <h1>Text To Audio</h1>
+    <div class="flex">
+        <img src="static/images/text to audio.jpg" class="image">
+        <div class="margintop" style="margin-top: 20px;">
+            <form action = "/ttoa" method = "post" enctype="multipart/form-data">
+                <textarea rows="10" cols="40" name = "text" placeholder="enter the text here" style="font-size: 16px;"></textarea>
+                <form>
+                    <div class="pdfto" style="margin: 10px auto; color: aqua;">
+                        <h3>Select the Voice Rate</h3>
+                        <div>
+                            <form action="#">
+                                <label for="lang">Rate</label>
+                                <select name="speeds" id="speed">
+                                  <option value="slow">Slow</option>
+                                  <option value="Normal">Normal</option>
+                                  <option value="Medium">Medium</option>
+                                  <option value="Fast">Fast</option>
+                                </select>
+                       
+                        <h3>select the tone</h3>
+                        <div>
+                            <form action="#">
+                                <label for="lang">Tone</label>
+                                <select name="tones" id="tone">
+                                  <option value="male">Male</option>
+                                  <option value="female">Female</option>
+                                </select>
+                                
+                          </form>
+                        </div>
+                    </div>
+                    <div >
+                        <h3>Output File Name</h3>
+                    <input placeholder="enter the file name" name="output_file">
+                </div >
+                    <button>submit</button>
+                </form>
+            </form>
+            
+            
+        </div>
+    </div>
+    
+</body>
+</html>
